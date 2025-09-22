@@ -16,11 +16,17 @@
   <widget class="QSlider" name="horizontalSlider">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>90</y>
+     <x>380</x>
+     <y>250</y>
      <width>160</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="minimum">
+    <number>-100</number>
+   </property>
+   <property name="maximum">
+    <number>100</number>
    </property>
    <property name="orientation">
     <enum>Qt::Orientation::Horizontal</enum>
@@ -29,10 +35,26 @@
   <widget class="QSpinBox" name="spinBox">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>90</y>
+     <x>280</x>
+     <y>250</y>
      <width>42</width>
      <height>22</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <number>-100</number>
+   </property>
+   <property name="maximum">
+    <number>100</number>
+   </property>
+  </widget>
+  <widget class="QLCDNumber" name="lcdNumber">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>140</y>
+     <width>64</width>
+     <height>23</height>
     </rect>
    </property>
   </widget>
@@ -46,12 +68,60 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>167</x>
-     <y>98</y>
+     <x>297</x>
+     <y>258</y>
     </hint>
     <hint type="destinationlabel">
-     <x>423</x>
-     <y>96</y>
+     <x>493</x>
+     <y>256</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>spinBox</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>491</x>
+     <y>259</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>267</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>lcdNumber</receiver>
+   <slot>display(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>298</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>383</x>
+     <y>162</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>lcdNumber</receiver>
+   <slot>display(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>439</x>
+     <y>255</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>403</x>
+     <y>160</y>
     </hint>
    </hints>
   </connection>
